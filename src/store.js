@@ -58,7 +58,17 @@ const store = new Vuex.Store({
       }
     ],
   },
-  getters: {},
+  getters: {
+    availableGames(state) {
+      return state.games.filter (game => game.stock > 0);
+    },
+    searchById: (_state, getters) => (id) => {
+      return getters.availableGames.filter (game => game.id == id)
+    },
+    totalStock(state){
+      return state.games.reduce((acc, game) => acc + game.stock, 0)
+    }
+  },
   mutations: {},
   actions: {}
 });
