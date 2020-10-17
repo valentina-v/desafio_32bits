@@ -13,6 +13,7 @@
 <script>
 
 import { mapGetters } from 'vuex'
+
 import List from '@/components/List'
 export default {
     data() {
