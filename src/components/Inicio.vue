@@ -9,7 +9,7 @@
 import {mapState} from 'vuex'
 export default {
     computed: {
-    ...mapState(["title", "subtitle"])
+    ...mapState(["title", "subtitle"]),
     },
 }
 </script>

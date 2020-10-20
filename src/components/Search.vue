@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>{{totalStock}}</h2>
+        <h2>Stock total disponible: {{totalStock}}</h2>
         <list :games="availableGames"></list>
         <h2>Busca tu juego</h2>
         <input type="text" v-model="searchId" >

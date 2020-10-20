@@ -57,6 +57,7 @@ const store = new Vuex.Store({
         outstanding: true,
       }
     ],
+    sales: [],
   },
   getters: {
     availableGames(state) {
@@ -69,8 +70,25 @@ const store = new Vuex.Store({
       return state.games.reduce((acc, game) => acc + game.stock, 0)
     }
   },
-  mutations: {},
-  actions: {}
+  mutations: {
+    ADD_SALES (state, product){
+      state.sales.push(product)
+    },
+    REMOVE_STOCK (state, game) {
+      let prod = state.games.find (p => p.id == game.id);
+      prod.stock -= 1;
+    },
+  },
+  actions: {
+    processSale({commit}, game) {
+      setTimeout(() => {
+        commit("REMOVE_STOCK", game)
+        setTimeout(() => {
+          commit("ADD_SALES", game)
+        }, 2000)
+      }, 3000) 
+    }
+  },
 });
 
 export default store;
