@@ -68,6 +68,10 @@ const store = new Vuex.Store({
     },
     totalStock(state){
       return state.games.reduce((acc, game) => acc + game.stock, 0)
+    },
+    totalGamesSold (state) {
+      let games = state.sales.map((game) => game.name)
+      return games.reduce ((a, c) => (a[c] = (a[c] || 0) + 1,a), Object.create(null));
     }
   },
   mutations: {
@@ -85,6 +89,7 @@ const store = new Vuex.Store({
         commit("REMOVE_STOCK", game)
         setTimeout(() => {
           commit("ADD_SALES", game)
+          alert("Agregada con éxito");
         }, 2000)
       }, 3000) 
     }
